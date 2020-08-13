@@ -53,8 +53,6 @@ navList.innerHTML = navListHTML;
 
 // Build menu
 
-// Scroll to section on link click
-
 // Set sections as active
 
 // get the main nav links
@@ -78,5 +76,18 @@ window.addEventListener("scroll", () => {
       section.classList.remove("active");
       link.classList.remove("active");
     }
+  });
+});
+
+// Scroll to section on link click
+
+navLinks.forEach((link) => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const target = link.getAttribute("href");
+    const section = document.querySelector(target);
+
+    section.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });
