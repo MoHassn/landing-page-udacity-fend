@@ -56,3 +56,27 @@ navList.innerHTML = navListHTML;
 // Scroll to section on link click
 
 // Set sections as active
+
+// get the main nav links
+const navLinks = document.querySelectorAll("#navbar__list .menu__link");
+
+window.addEventListener("scroll", () => {
+  let fromTop = window.scrollY;
+
+  navLinks.forEach((link) => {
+    // get the section of the link
+    const section = document.querySelector(link.hash);
+
+    // check if the section is in the viewport
+    if (
+      section.offsetTop <= fromTop + 20 &&
+      section.offsetTop + section.offsetHeight > fromTop + 20
+    ) {
+      section.classList.add("active");
+      link.classList.add("active");
+    } else {
+      section.classList.remove("active");
+      link.classList.remove("active");
+    }
+  });
+});
